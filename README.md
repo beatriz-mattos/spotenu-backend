@@ -1,4 +1,4 @@
-# spotenu-backend
+# Spotenu-backend
 Servidor da aplicação Spotenu, desenvolvida como projeto fullstack da Labenu.
 
 # Stack
