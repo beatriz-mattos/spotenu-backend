@@ -2,6 +2,7 @@
 Servidor da aplicação Spotenu, desenvolvida como projeto fullstack da Labenu.
 
 # Stack
+- Typescript
 - Express
 - MySQL
 - Knex
@@ -9,3 +10,4 @@ Servidor da aplicação Spotenu, desenvolvida como projeto fullstack da Labenu.
 - Bcrypt
 - JsonWebToken
 - Dotenv
+- Ts-node
