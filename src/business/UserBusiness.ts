@@ -103,9 +103,13 @@ export class UserBusiness {
             throw new NotFoundError("User not found")
         };
 
-        const isPasswordCorrect = await this.hashManager.compare(password, user.getPassword());
+        // const isPasswordCorrect = await this.hashManager.compare(password, user.getPassword());
 
-        if (!isPasswordCorrect) {
+        // if (!isPasswordCorrect) {
+        //     throw new InvalidParameterError("Invalid password")
+        // };
+
+        if(password !== user.getPassword()) {
             throw new InvalidParameterError("Invalid password")
         };
 
