@@ -35,7 +35,7 @@ export class User {
                 user.email,
                 user.nickname,
                 user.password,
-                user.stringToUserType(user.type)
+                stringToUserType(user.type)
             )
         );
     };

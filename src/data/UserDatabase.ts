@@ -26,16 +26,14 @@ export class UserDatabase extends BaseDatabase {
 
   public async getUserByEmailOrNickname(emailOrNickname: string): Promise<User | undefined> {
     try {
-     
+
       const result = await super.getConnection()
-      .select("*")
-      .from(this.TABLE_NAME)
-      .where({ email: emailOrNickname })
-      .orWhere({ nickname: emailOrNickname })
-      
-      if (result[0] > 0) {
-          return User.toUserModel(result[0])
-        };
+        .select("*")
+        .from(this.TABLE_NAME)
+        .where({ email: emailOrNickname })
+        .orWhere({ nickname: emailOrNickname })
+
+      return User.toUserModel(result[0]);
 
     } catch (err) {
       throw new Error(err.sqlMessage || err.message);

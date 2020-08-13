@@ -97,6 +97,7 @@ export class UserBusiness {
         };
 
         const user = await this.userDatabase.getUserByEmailOrNickname(emailOrNickname);
+        console.log(user)
 
         if (!user) {
             throw new NotFoundError("User not found")
