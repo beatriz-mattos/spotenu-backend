@@ -24,8 +24,10 @@ export class UserController {
                 password: req.body.password,
                 type: req.body.type
             };
+            
+            const response = await UserController.UserBusiness.signup(input);
 
-            res.status(200).send(input);
+            res.status(200).send(response);
 
         } catch (err) {
             res.status(err.code || 400).send({ message: err.message })
@@ -44,7 +46,10 @@ export class UserController {
                 type: req.body.type
             };
 
-            res.status(200).send(inputAdmin);
+            const token = req.headers.authorization as string;
+            const response = await UserController.UserBusiness.signupAdmin(inputAdmin, token);
+
+            res.status(200).send(response);
 
         } catch (err) {
             res.status(err.code || 400).send({ message: err.message })
@@ -55,13 +60,13 @@ export class UserController {
 
     async login(req: Request, res: Response) {
         try {
-            const loginData: LoginInputDTO = {
-                emailOrNickname: req.body.emailOrNickname,
-                password: req.body.password
-            };
+            const { emailOrNickname, password } = req.body;
 
-            res.status(200).send(loginData);
+            const input: LoginInputDTO = { emailOrNickname, password };
 
+            const token = await UserController.UserBusiness.login(input);
+
+            res.status(200).send({ token });
         } catch (err) {
             res.status(err.code || 400).send({ message: err.message })
         };

@@ -92,8 +92,8 @@ export class UserBusiness {
 
         const { emailOrNickname, password } = input;
         
-        if (!emailOrNickname || password) {
-            throw new InvalidParameterError("Missing input")
+        if (!emailOrNickname || !password) {
+            throw new InvalidParameterError("Missing some input")
         };
 
         const user = await this.userDatabase.getUserByEmailOrNickname(emailOrNickname);
