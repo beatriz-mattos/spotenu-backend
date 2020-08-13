@@ -24,18 +24,22 @@ export class User {
     // public setPassword = (password: string) => this.password = password;
     // public setType = (type: UserType) => this.type = type;
     // public setDescription = (description: string) => this.description = description;
-    // public setIsApproved = (is_approved: boolean) => this.is_approved = is_approved;
+    // public setIsApproved = (isApproved: boolean) => this.isApproved = isApproved;
 
-    public static toUserModel(user: any): User {
-        return new User(
-            user.id,
-            user.name,
-            user.email,
-            user.nickname,
-            user.password,
-            user.stringToUserType(user.type)
+    public static toUserModel(user?: any): User | undefined {
+        return (
+            user &&
+            new User(
+                user.id,
+                user.name,
+                user.email,
+                user.nickname,
+                user.password,
+                user.stringToUserType(user.type)
+            )
         );
     };
+
 };
 
 export const stringToUserType = (input: string): USER_TYPE => {
@@ -51,7 +55,7 @@ export const stringToUserType = (input: string): USER_TYPE => {
 
         default:
             throw new InvalidParameterError("Invalid user type");
-    }
+    };
 };
 
 export enum USER_TYPE {

@@ -1,4 +1,4 @@
-import { stringToUserType, User, USER_TYPE, LoginInputDTO } from './../model/User';
+import { User, USER_TYPE, LoginInputDTO, stringToUserType } from './../model/User';
 import { InvalidParameterError } from "../error/InvalidParameterError";
 import { UnauthorizedError } from './../error/UnauthorizedError';
 import { NotFoundError } from './../error/NotFoundError';
