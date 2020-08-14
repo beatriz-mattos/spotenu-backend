@@ -17,15 +17,6 @@ export class User {
     public getPassword = () => this.password;
     public getType = () => this.type;
 
-    // public setId = (id: string) => this.id = id;
-    // public setName = (name: string) => this.name = name;
-    // public setNickame = (nickname: string) => this.nickname = nickname;
-    // public setEmail = (email: string) => this.email = email;
-    // public setPassword = (password: string) => this.password = password;
-    // public setType = (type: UserType) => this.type = type;
-    // public setDescription = (description: string) => this.description = description;
-    // public setIsApproved = (isApproved: boolean) => this.isApproved = isApproved;
-
     public static toUserModel(user?: any): User | undefined {
         return (
             user &&
@@ -76,12 +67,3 @@ export interface LoginInputDTO {
     emailOrNickname: string,
     password: string
 };
-
-// export interface BandInputDTO {
-//     name: string,
-//     email: string,
-//     nickname: string,
-//     password: string,
-//     description: string,
-//     isApproved: boolean
-// };
