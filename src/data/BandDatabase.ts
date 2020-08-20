@@ -16,7 +16,7 @@ export class BandDatabase extends BaseDatabase {
                     '${band.getEmail()}',
                     '${band.getDescription()}',
                     '${band.getPassword()}', 
-                    '${band.getIsApproved()}'
+                    ${band.getIsApproved()}
                 )
             `);
         } catch (err) {
