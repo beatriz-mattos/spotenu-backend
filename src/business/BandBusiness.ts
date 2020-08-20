@@ -48,7 +48,7 @@ export class BandBusiness {
         const is_approved = this.convertIntToBoolean(0);
 
         await this.bandDatabase.createBand(
-            new Band(id, description, is_approved, name, email, nickname, password, stringToUserType(USER_TYPE.BAND))
+            new Band(id, description, is_approved, name, email, nickname, cryptedPassword, stringToUserType(USER_TYPE.BAND))
         );
     };
 
