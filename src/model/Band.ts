@@ -1,29 +1,76 @@
-export class Band {
-    constructor(
-        private id: string,
-        private name: string,
-        private email: string,
-        private nickname: string,
-        private password: string,
-        private description: string,
-        private isApproved: boolean
-    ) {};
+import { User, USER_TYPE, stringToUserType } from "./User";
 
-    public getId = () => this.id;
+export class Band extends User {
+    constructor(
+        private band_id: string,
+        private description: string,
+        private isApproved: boolean,
+        protected name: string,
+        protected email: string,
+        protected nickname: string,
+        protected password: string,
+        protected type: USER_TYPE        
+    ) {
+        super(band_id, name, email, nickname, password, type)
+            this.band_id,
+            this.name,
+            this.email,
+            this.nickname,
+            this.password,
+            this.type = USER_TYPE.BAND
+    };
+
+    protected convertIntToBoolean(value: number): boolean {
+        return value === 1;
+    };
+
+    protected convertBooleanToInt(value: boolean): number {
+        return value ? 1 : 0;
+    };
+
+    public getBandId = () => this.band_id;
     public getName = () => this.name;
     public getEmail = () => this.email;
     public getNickname = () => this.nickname;
     public getPassword = () => this.password;
     public getDescription = () => this.description;
-    public getIsApproved = () => this.isApproved;
+    public getIsApproved = () => this.isApproved = this.convertIntToBoolean(0);
+    public getType = () => this.type = USER_TYPE.BAND;
 
+
+    public static toBandModel(band?: any): Band | undefined {
+        return (
+            band &&
+            new Band(
+                band.id,
+                band.name,
+                band.email,
+                band.nickname,
+                band.password,
+                band.description,
+                band.isApproved,
+                stringToUserType(band.type)
+            )
+        );
+    };
 };
 
-export interface BandInputDTO {
+export interface BandSignupInputDTO {
     name: string,
     email: string,
     nickname: string,
     password: string,
-    description: string,
-    isApproved: boolean
+    description: string
+};
+
+export interface BandLoginInputDTO {
+    emailOrNickname: string,
+    password: string
+};
+
+export interface BandOutputDTO {
+    name: string,
+    email: string,
+    nickname: string,
+    is_approved: boolean
 };

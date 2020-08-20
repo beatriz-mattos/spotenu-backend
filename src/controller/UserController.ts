@@ -1,3 +1,4 @@
+import { BandDatabase } from './../data/BandDatabase';
 import { Authenticator } from '../services/Authenticator';
 import { UserBusiness } from './../business/UserBusiness';
 import { HashManager } from './../services/HashManager';

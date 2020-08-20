@@ -17,7 +17,7 @@ export class UserDatabase extends BaseDatabase {
           '${user.getPassword()}', 
           '${user.getType()}'
         )
-    `);
+     `);
 
     } catch (err) {
       throw new Error(err.sqlMessage || err.message);

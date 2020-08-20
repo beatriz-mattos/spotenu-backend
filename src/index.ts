@@ -1,4 +1,5 @@
 import { userRouter } from "./routes/UserRouter";
+import { bandRouter } from "./routes/BandRouter";
 import { AddressInfo } from "net";
 import express from "express";
 import dotenv from "dotenv";
@@ -9,6 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/user", userRouter);
+app.use("/band", bandRouter);
 
 const server = app.listen(3000, () => {
     if (server) {
