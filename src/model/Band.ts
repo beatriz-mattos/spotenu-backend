@@ -9,15 +9,9 @@ export class Band extends User {
         protected email: string,
         protected nickname: string,
         protected password: string,
-        protected type: USER_TYPE        
+        protected type: USER_TYPE = USER_TYPE.BAND   
     ) {
         super(band_id, name, email, nickname, password, type)
-            this.band_id,
-            this.name,
-            this.email,
-            this.nickname,
-            this.password,
-            this.type
     };
 
     protected convertIntToBoolean(value: number): boolean {
@@ -49,7 +43,7 @@ export class Band extends User {
                 band.password,
                 band.description,
                 band.isApproved,
-                stringToUserType(band.type)
+                USER_TYPE.BAND
             )
         );
     };

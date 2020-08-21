@@ -30,6 +30,8 @@ export class BandDatabase extends BaseDatabase {
                 .from(this.TABLE_NAME)
                 .where({ band_id })
 
+                console.log(result);
+
             return Band.toBandModel(result[0]);
 
         } catch (err) {
@@ -39,6 +41,8 @@ export class BandDatabase extends BaseDatabase {
 
     public async approveBandById(band_id: string): Promise<void> {
         try {
+            //console.log({band_id})
+
             await super.getConnection()
                 .update({ is_approved: "1" })
                 .from(this.TABLE_NAME)

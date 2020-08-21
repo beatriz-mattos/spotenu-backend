@@ -56,9 +56,10 @@ export class BandController {
 
     public async approve(req: Request, res: Response) {
         try {
-            await BandController.BandBusiness.approve(req.headers.authorization as string, req.query.id as string);
+            
+            await BandController.BandBusiness.approve(req.headers.authorization as string, req.query.band_id as string);
 
-            res.sendStatus(200);
+            res.status(200).send({ message: "Band approved sucessfully!"});
         }
         catch (err) {
             res.status(err.errorCode || 400).send({ message: err.message })

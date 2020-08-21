@@ -14,7 +14,7 @@ export class BandBusiness {
         private hashManager: HashManager,
         private authenticator: Authenticator,
         private idGenerator: IdGenerator
-    ) { };
+    ) {};
 
     /* TODO - esses mesmos métodos estão na model, mas não consigo acessá-los por aqui */
     protected convertIntToBoolean(value: number): boolean {
@@ -89,24 +89,24 @@ export class BandBusiness {
 
 
     public async approve(token: string, band_id: string) {
-    if (!token) {
-        throw new UnauthorizedError("Missing access token")
+        if (!token) {
+            throw new UnauthorizedError("Missing access token")
+        };
+
+        const userData = this.authenticator.getData(token);
+
+        if (userData.type !== USER_TYPE.ADMIN) {
+            throw new UnauthorizedError("Only an admin has permission to access this endpoint")
+        };
+
+        const result = await this.bandDatabase.getBandById(band_id);
+
+        if (!result) {
+            throw new NotFoundError("The band you're looking for couldn't be found with this id")
+        };
+
+        await this.bandDatabase.approveBandById(band_id);
     };
-
-    const userData = this.authenticator.getData(token);
-
-    if (userData.type !== USER_TYPE.ADMIN) {
-        throw new UnauthorizedError("Only an admin has permission to access this endpoint")
-    };
-
-    const result = await this.bandDatabase.getBandById(band_id);
-
-    if (!result) {
-        throw new NotFoundError("The band you're looking for couldn't be found with this id")
-    };
-
-    await this.bandDatabase.approveBandById(band_id);
-};
 
     // public async getAllBands(token: string) {
     //     if (!token) {

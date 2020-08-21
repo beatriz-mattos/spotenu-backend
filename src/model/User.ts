@@ -34,6 +34,7 @@ export class User {
 };
 
 export const stringToUserType = (input: string): USER_TYPE => {
+    console.log(input);
     switch (input) {
         case "ADMIN":
             return USER_TYPE.ADMIN;
@@ -49,6 +50,7 @@ export const stringToUserType = (input: string): USER_TYPE => {
 
         case "BAND":
             return USER_TYPE.BAND;
+            break;
 
         default:
             throw new InvalidParameterError("Invalid user type");
