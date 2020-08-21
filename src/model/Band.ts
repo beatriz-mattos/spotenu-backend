@@ -1,15 +1,15 @@
-import { User, USER_TYPE, stringToUserType } from "./User";
+import { User, USER_TYPE } from "./User";
 
 export class Band extends User {
     constructor(
         private band_id: string,
-        private description: string,
-        private isApproved: boolean,
         protected name: string,
         protected email: string,
         protected nickname: string,
         protected password: string,
-        protected type: USER_TYPE = USER_TYPE.BAND   
+        protected type: USER_TYPE = USER_TYPE.BAND,  
+        private description: string,
+        private isApproved: boolean
     ) {
         super(band_id, name, email, nickname, password, type)
     };
@@ -28,7 +28,7 @@ export class Band extends User {
     public getNickname = () => this.nickname;
     public getPassword = () => this.password;
     public getDescription = () => this.description;
-    public getIsApproved = () => this.isApproved = this.convertIntToBoolean(0);
+    public getIsApproved = () => this.isApproved;
     public getType = () => this.type = USER_TYPE.BAND;
 
 
@@ -36,14 +36,14 @@ export class Band extends User {
         return (
             band &&
             new Band(
-                band.id,
+                band.band_id,
                 band.name,
                 band.email,
                 band.nickname,
                 band.password,
+                USER_TYPE.BAND,
                 band.description,
-                band.isApproved,
-                USER_TYPE.BAND
+                band.isApproved
             )
         );
     };

@@ -8,6 +8,6 @@ const bandController = new BandController();
 bandRouter.post("/signup", bandController.signup);
 bandRouter.post("/login", bandController.login);
 
-/* exclusivo do usuário administrador */
+/* acesso exclusivo do usuário administrador */
 bandRouter.put("/approve", bandController.approve);
 //bandRouter.get("/all", bandController.getAllBands);

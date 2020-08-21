@@ -38,14 +38,13 @@ export class BandController {
 
     async login(req: Request, res: Response) {
         try {
-            const input: BandLoginInputDTO = {
-                emailOrNickname: req.body.emailOrNickname as string,
-                password: req.body.password as string
-            };
+            const { emailOrNickname, password } = req.body;
 
-            const response = await BandController.BandBusiness.login(input);
+            const input: BandLoginInputDTO = { emailOrNickname, password };
 
-            res.status(200).send(response);
+            const token = await BandController.BandBusiness.login(input);
+
+            res.status(200).send({ token });
 
         } catch (err) {
             res.status(err.code || 400).send({ message: err.message })

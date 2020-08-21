@@ -1,4 +1,4 @@
-import { Band, BandLoginInputDTO, BandSignupInputDTO } from './../model/Band';
+import { Band, BandLoginInputDTO, BandSignupInputDTO, BandOutputDTO } from './../model/Band';
 import { NotFoundError } from './../error/NotFoundError';
 import { BandDatabase } from "../data/BandDatabase";
 import { HashManager } from "../services/HashManager";
@@ -42,24 +42,25 @@ export class BandBusiness {
             throw new InvalidParameterError("Your password must contain at least 6 characters")
         };
 
-        const id = this.idGenerator.generate();
+        const band_id = this.idGenerator.generate();
         const cryptedPassword = await this.hashManager.hash(password);
 
         const is_approved = this.convertIntToBoolean(0);
 
         await this.bandDatabase.createBand(
-            new Band(id, description, is_approved, name, email, nickname, cryptedPassword, stringToUserType(USER_TYPE.BAND))
+            new Band(band_id, name, email, nickname, cryptedPassword, stringToUserType(USER_TYPE.BAND), description, is_approved)
         );
     };
 
-    public async login(input: BandLoginInputDTO) {
+    public async login(input: BandLoginInputDTO, output: BandOutputDTO) {
         const { emailOrNickname, password } = input;
 
         if (!emailOrNickname || !password) {
             throw new InvalidParameterError("Missing some input")
         };
 
-        const band = await this.bandDatabase.getUserByEmailOrNickname(emailOrNickname);
+        const band = await this.bandDatabase.getBandByEmailOrNickname(emailOrNickname);
+        console.log(band)
 
         if (!band) {
             throw new NotFoundError("Band not found")
@@ -71,20 +72,16 @@ export class BandBusiness {
             throw new InvalidParameterError("Invalid password")
         };
 
-        // if(password !== user.getPassword()) {
-        //     throw new InvalidParameterError("Invalid password")
-        // };
-
         if (!band.getIsApproved()) {
             throw new UnauthorizedError("Your band wasn't approved")
         }
 
-        // const accessToken = this.authenticator.generateToken({
-        //     id: band.getId(),
-        //     type: band.getType()
-        // });
+        const accessToken = this.authenticator.generateToken({
+            id: band.getId(),
+            type: band.getType()
+        });
 
-        // return { accessToken };
+        return { accessToken };
     };
 
 

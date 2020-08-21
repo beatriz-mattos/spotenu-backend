@@ -16,6 +16,7 @@ export class Authenticator {
 
     return { id: payload.id, type: payload.type };
   };
+
 };
 
 interface AuthenticationData {
