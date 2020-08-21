@@ -79,12 +79,12 @@ export class BandBusiness {
             throw new UnauthorizedError("Your band wasn't approved")
         }
 
-        const accessToken = this.authenticator.generateToken({
-            id: band.getId(),
-            type: band.getType()
-        });
+        // const accessToken = this.authenticator.generateToken({
+        //     id: band.getId(),
+        //     type: band.getType()
+        // });
 
-        return { accessToken };
+        // return { accessToken };
     };
 
 

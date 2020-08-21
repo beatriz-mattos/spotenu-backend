@@ -17,7 +17,7 @@ export class Band extends User {
             this.email,
             this.nickname,
             this.password,
-            this.type = USER_TYPE.BAND
+            this.type
     };
 
     protected convertIntToBoolean(value: number): boolean {

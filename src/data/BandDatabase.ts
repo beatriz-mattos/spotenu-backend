@@ -1,4 +1,3 @@
-import { BandOutputDTO } from './../model/Band';
 import { BaseDatabase } from "./BaseDatabase";
 import { Band } from "../model/Band";
 
@@ -41,7 +40,7 @@ export class BandDatabase extends BaseDatabase {
     public async approveBandById(band_id: string): Promise<void> {
         try {
             await super.getConnection()
-                .update({ is_approved: 1 })
+                .update({ is_approved: "1" })
                 .from(this.TABLE_NAME)
                 .where({ band_id })
 
