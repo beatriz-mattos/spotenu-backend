@@ -61,8 +61,3 @@ export interface BandLoginInputDTO {
     emailOrNickname: string,
     password: string
 };
-
-// export interface BandOutputDTO {
-//     name: string,
-//     is_approved: boolean
-// };

@@ -104,23 +104,23 @@ export class BandBusiness {
         await this.bandDatabase.approveBandById(band_id);
     };
 
-    // public async getAllBands(token: string) {
-    //     if (!token) {
-    //         throw new UnauthorizedError("Missing access token")
-    //     };
+    public async getAllBands(token: string) {
+        if (!token) {
+            throw new UnauthorizedError("Missing access token")
+        };
 
-    //     const userData = this.authenticator.getData(token);
+        const userData = this.authenticator.getData(token);
 
-    //     if(userData.type !== USER_TYPE.ADMIN) {
-    //         throw new UnauthorizedError("Only the admin has permission to access this endpoint")
-    //     };
+        if(userData.type !== USER_TYPE.ADMIN) {
+            throw new UnauthorizedError("Only the admin has permission to access this endpoint")
+        };
 
-    //     const result = await this.bandDatabase.getAllBands();
+        const result = await this.bandDatabase.getAllBands();
 
-    //     if(!result) {
-    //         throw new NotFoundError("There's no bands")
-    //     };
+        if(!result) {
+            throw new NotFoundError("There's no bands")
+        };
 
-    //     return result;
-    // };
+        return result;
+    };
 };

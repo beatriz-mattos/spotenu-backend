@@ -67,17 +67,16 @@ export class BandController {
         await BaseDatabase.destroyConnection();
     };
 
-    // async getAllBands(req: Request, res: Response) {
-    //     try {
-    //         const response = await BandController.BandBusiness.getAllBands(req.headers.authorization as string);
+    async getAllBands(req: Request, res: Response) {
+        try {
+            const response = await BandController.BandBusiness.getAllBands(req.headers.authorization as string);
 
-    //         res.status(200).send(response);
+            res.status(200).send(response);
 
-    //     } catch (err) {
-    //         res.status(err.code || 400).send({ message: err.message })
-    //     };
+        } catch (err) {
+            res.status(err.code || 400).send({ message: err.message })
+        };
 
-    //     await BaseDatabase.destroyConnection();
-    // };
-
+        await BaseDatabase.destroyConnection();
+    };
 };

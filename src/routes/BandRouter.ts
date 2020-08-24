@@ -10,4 +10,4 @@ bandRouter.post("/login", bandController.login);
 
 /* acesso exclusivo do usuário administrador */
 bandRouter.put("/approve", bandController.approve);
-//bandRouter.get("/all", bandController.getAllBands);
+bandRouter.get("/all", bandController.getAllBands);

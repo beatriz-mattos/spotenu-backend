@@ -64,16 +64,16 @@ export class BandDatabase extends BaseDatabase {
         }
     };
 
-    // public async getAllBands(): Promise<BandOutputDTO> {
-    //     try {
-    //         const response = await this.getConnection()
-    //         .select("name", "email", "nickname", "is_approved")
-    //         .from(this.TABLE_NAME)
+    public async getAllBands(): Promise<Band[]> {
+        try {
+            const bands = await this.getConnection()
+            .select("name", "email", "nickname", "is_approved")
+            .from(this.TABLE_NAME)
 
-    //     return response;
+        return bands;
 
-    //     } catch (err) {
-    //         throw new Error(err.sqlMessage || err.message);
-    //     }
-    // };
+        } catch (err) {
+            throw new Error(err.sqlMessage || err.message);
+        }
+    };
 };
