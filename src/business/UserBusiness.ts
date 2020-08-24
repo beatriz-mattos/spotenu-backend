@@ -97,19 +97,14 @@ export class UserBusiness {
         };
 
         const user = await this.userDatabase.getUserByEmailOrNickname(emailOrNickname);
-        console.log(user)
 
         if (!user) {
             throw new NotFoundError("User not found")
         };
 
-        // const isPasswordCorrect = await this.hashManager.compare(password, user.getPassword());
+        const isPasswordCorrect = await this.hashManager.compare(password, user.getPassword());
 
-        // if (!isPasswordCorrect) {
-        //     throw new InvalidParameterError("Invalid password")
-        // };
-
-        if(password !== user.getPassword()) {
+        if (!isPasswordCorrect) {
             throw new InvalidParameterError("Invalid password")
         };
 

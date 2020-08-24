@@ -1,3 +1,4 @@
+import { BandDatabase } from './../data/BandDatabase';
 import { Authenticator } from '../services/Authenticator';
 import { UserBusiness } from './../business/UserBusiness';
 import { HashManager } from './../services/HashManager';
@@ -66,7 +67,8 @@ export class UserController {
 
             const token = await UserController.UserBusiness.login(input);
 
-            res.status(200).send({ token });
+            res.status(200).send(token);
+
         } catch (err) {
             res.status(err.code || 400).send({ message: err.message })
         };

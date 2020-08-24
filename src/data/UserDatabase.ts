@@ -17,7 +17,7 @@ export class UserDatabase extends BaseDatabase {
           '${user.getPassword()}', 
           '${user.getType()}'
         )
-    `);
+     `);
 
     } catch (err) {
       throw new Error(err.sqlMessage || err.message);
@@ -26,7 +26,7 @@ export class UserDatabase extends BaseDatabase {
 
   public async getUserByEmailOrNickname(emailOrNickname: string): Promise<User | undefined> {
     try {
-
+      
       const result = await super.getConnection()
         .select("*")
         .from(this.TABLE_NAME)
