@@ -1,4 +1,4 @@
-import { Band, BandLoginInputDTO, BandSignupInputDTO, BandOutputDTO } from './../model/Band';
+import { Band, BandLoginInputDTO, BandSignupInputDTO } from './../model/Band';
 import { NotFoundError } from './../error/NotFoundError';
 import { BandDatabase } from "../data/BandDatabase";
 import { HashManager } from "../services/HashManager";
@@ -74,7 +74,7 @@ export class BandBusiness {
 
         if (!band.getIsApproved()) {
             throw new UnauthorizedError("Your band wasn't approved")
-        }
+        };
 
         const accessToken = this.authenticator.generateToken({
             id: band.getId(),
@@ -83,7 +83,6 @@ export class BandBusiness {
 
         return { accessToken };
     };
-
 
     public async approve(token: string, band_id: string) {
         if (!token) {

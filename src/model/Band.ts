@@ -43,7 +43,7 @@ export class Band extends User {
                 band.password,
                 USER_TYPE.BAND,
                 band.description,
-                band.isApproved
+                band.is_approved
             )
         );
     };
@@ -62,7 +62,7 @@ export interface BandLoginInputDTO {
     password: string
 };
 
-export interface BandOutputDTO {
-    name: string,
-    is_approved: boolean
-};
+// export interface BandOutputDTO {
+//     name: string,
+//     is_approved: boolean
+// };

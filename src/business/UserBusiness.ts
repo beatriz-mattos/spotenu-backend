@@ -108,10 +108,6 @@ export class UserBusiness {
             throw new InvalidParameterError("Invalid password")
         };
 
-        // if(password !== user.getPassword()) {
-        //     throw new InvalidParameterError("Invalid password")
-        // };
-
         const accessToken = this.authenticator.generateToken({
             id: user.getId(),
             type: user.getType()

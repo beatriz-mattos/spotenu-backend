@@ -44,7 +44,7 @@ export class BandController {
 
             const response = await BandController.BandBusiness.login(input);
 
-            res.status(200).send({ response });
+            res.status(200).send(response);
 
         } catch (err) {
             res.status(err.code || 400).send({ message: err.message })
