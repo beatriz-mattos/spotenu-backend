@@ -30,7 +30,6 @@ export class User {
             )
         );
     };
-
 };
 
 export const stringToUserType = (input: string): USER_TYPE => {

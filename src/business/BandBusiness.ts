@@ -1,12 +1,12 @@
 import { Band, BandLoginInputDTO, BandSignupInputDTO } from './../model/Band';
-import { NotFoundError } from './../error/NotFoundError';
-import { BandDatabase } from "../data/BandDatabase";
-import { HashManager } from "../services/HashManager";
-import { Authenticator } from "../services/Authenticator";
-import { IdGenerator } from "../services/IdGenerator";
 import { InvalidParameterError } from "../error/InvalidParameterError";
 import { UnauthorizedError } from "../error/UnauthorizedError";
 import { USER_TYPE, stringToUserType } from '../model/User';
+import { Authenticator } from "../services/Authenticator";
+import { NotFoundError } from './../error/NotFoundError';
+import { HashManager } from "../services/HashManager";
+import { IdGenerator } from "../services/IdGenerator";
+import { BandDatabase } from "../data/BandDatabase";
 
 export class BandBusiness {
     constructor(
@@ -16,7 +16,6 @@ export class BandBusiness {
         private idGenerator: IdGenerator
     ) {};
 
-    /* TODO - esses mesmos métodos estão na model, mas não consigo acessá-los por aqui */
     protected convertIntToBoolean(value: number): boolean {
         return value === 1;
     };
@@ -24,10 +23,8 @@ export class BandBusiness {
     protected convertBooleanToInt(value: boolean): number {
         return value ? 1 : 0;
     };
-    /* (?) */
 
     public async signup(input: BandSignupInputDTO) {
-
         const { name, email, password, nickname, description } = input;
 
         if (!name || !email || !description || !password || !nickname) {
@@ -60,7 +57,6 @@ export class BandBusiness {
         };
 
         const band = await this.bandDatabase.getBandByEmailOrNickname(emailOrNickname);
-        console.log(band)
 
         if (!band) {
             throw new NotFoundError("Band not found")

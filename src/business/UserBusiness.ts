@@ -17,7 +17,6 @@ export class UserBusiness {
     ) {};
 
     public async signup(input: SignupInputDTO) {
-
         const { name, email, password, nickname, type } = input;
 
         if (!name || !email || !password || !nickname) {
@@ -48,7 +47,6 @@ export class UserBusiness {
     };
 
     public async signupAdmin(input: SignupInputDTO, token: string) {
-
         const { name, email, password, nickname } = input;
         
         if (!token) {
@@ -89,7 +87,6 @@ export class UserBusiness {
     };
 
     public async login(input: LoginInputDTO) {
-
         const { emailOrNickname, password } = input;
         
         if (!emailOrNickname || !password) {

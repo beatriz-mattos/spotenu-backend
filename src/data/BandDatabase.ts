@@ -31,7 +31,6 @@ export class BandDatabase extends BaseDatabase {
                 .where({ band_id })
 
             return Band.toBandModel(result[0]);
-
         } catch (err) {
             throw new Error(err.sqlMessage || err.message);
         }

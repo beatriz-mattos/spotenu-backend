@@ -1,11 +1,11 @@
+import { BandLoginInputDTO, BandSignupInputDTO } from "../model/Band";
 import { BandBusiness } from "../business/BandBusiness";
 import { HashManager } from "../services/HashManager";
 import { BandDatabase } from "../data/BandDatabase";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
-import { Request, Response } from "express";
-import { BandLoginInputDTO, BandSignupInputDTO } from "../model/Band";
 import { BaseDatabase } from "../data/BaseDatabase";
+import { Request, Response } from "express";
 
 export class BandController {
     private static BandBusiness = new BandBusiness(
@@ -55,7 +55,6 @@ export class BandController {
 
     public async approve(req: Request, res: Response) {
         try {
-            
             await BandController.BandBusiness.approve(req.headers.authorization as string, req.query.band_id as string);
 
             res.status(200).send({ message: "Band approved sucessfully!"});
@@ -72,7 +71,7 @@ export class BandController {
             const response = await BandController.BandBusiness.getAllBands(req.headers.authorization as string);
 
             res.status(200).send(response);
-
+            
         } catch (err) {
             res.status(err.code || 400).send({ message: err.message })
         };
