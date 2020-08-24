@@ -1,4 +1,4 @@
-import { User, USER_TYPE } from "./User";
+import { USER_TYPE, User } from "./User";
 
 export class Band extends User {
     constructor(
@@ -64,7 +64,5 @@ export interface BandLoginInputDTO {
 
 export interface BandOutputDTO {
     name: string,
-    email: string,
-    nickname: string,
     is_approved: boolean
 };

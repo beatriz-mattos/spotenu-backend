@@ -34,7 +34,6 @@ export class User {
 };
 
 export const stringToUserType = (input: string): USER_TYPE => {
-    console.log(input);
     switch (input) {
         case "ADMIN":
             return USER_TYPE.ADMIN;

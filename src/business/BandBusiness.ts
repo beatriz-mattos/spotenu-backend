@@ -52,7 +52,7 @@ export class BandBusiness {
         );
     };
 
-    public async login(input: BandLoginInputDTO, output: BandOutputDTO) {
+    public async login(input: BandLoginInputDTO) {
         const { emailOrNickname, password } = input;
 
         if (!emailOrNickname || !password) {

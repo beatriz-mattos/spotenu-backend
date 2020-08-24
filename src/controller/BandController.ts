@@ -27,7 +27,7 @@ export class BandController {
 
             const response = await BandController.BandBusiness.signup(input);
 
-            res.status(200).send({ message: "Band created sucessfully!"});
+            res.status(200).send({ response, message: "Band created sucessfully!"});
 
         } catch (err) {
             res.status(err.code || 400).send({ message: err.message })
@@ -42,9 +42,9 @@ export class BandController {
 
             const input: BandLoginInputDTO = { emailOrNickname, password };
 
-            const token = await BandController.BandBusiness.login(input);
+            const response = await BandController.BandBusiness.login(input);
 
-            res.status(200).send({ token });
+            res.status(200).send({ response });
 
         } catch (err) {
             res.status(err.code || 400).send({ message: err.message })
