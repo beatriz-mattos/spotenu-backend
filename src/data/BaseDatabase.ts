@@ -20,7 +20,7 @@ export abstract class BaseDatabase {
         return BaseDatabase.connection;
     };
 
-    /* Método estático de destruir a conexão, para desativar os endpoints uma vez que eles já foram executados p/ não gerar problemas dependendo do tamanho da aplicação */
+    /* Método estático de destruir a conexão, para desativar os endpoints uma vez que eles já foram executados */
     public static async destroyConnection(): Promise<void> {
         if (BaseDatabase.connection) {
             await BaseDatabase.connection.destroy();

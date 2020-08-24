@@ -14,14 +14,6 @@ export class Band extends User {
         super(band_id, name, email, nickname, password, type)
     };
 
-    protected convertIntToBoolean(value: number): boolean {
-        return value === 1;
-    };
-
-    protected convertBooleanToInt(value: boolean): number {
-        return value ? 1 : 0;
-    };
-
     public getBandId = () => this.band_id;
     public getName = () => this.name;
     public getEmail = () => this.email;
