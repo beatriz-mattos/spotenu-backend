@@ -1,0 +1,30 @@
+plugins:
+  - serverless-offline
+  - serverless-webpack
+  - serverless-dotenv-plugin
+
+# Nome do projeto
+# Será usado para construir o nome da Lambda e do API Gateway
+# MUDE AQUI!
+service: spotenu-deploy
+
+provider:
+  name: aws
+  runtime: nodejs12.x 
+  stage: dev 
+  region: us-east-1 
+
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    packager: "npm"
+    includeModules: true 
+
+
+functions:
+  app:
+    handler: src/lambda.handler
+    events: 
+      - http: ANY / 
+      - http: "ANY {proxy+}" 
+      - cors: true
