@@ -11,3 +11,9 @@ Servidor da aplicação Spotenu, desenvolvida como projeto fullstack da Labenu.
 - JsonWebToken
 - Dotenv
 - Ts-node
+
+
+# Infraestrutura
+- AWS Lambda
+- Serverless
+- Cors
