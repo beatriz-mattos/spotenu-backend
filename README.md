@@ -17,3 +17,6 @@ Servidor da aplicação Spotenu, desenvolvida como projeto fullstack da Labenu.
 - AWS Lambda
 - Serverless
 - Cors
+
+# Documentação API
+- em breve
