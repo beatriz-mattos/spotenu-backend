@@ -59,7 +59,7 @@
     "AppLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/spotenu-deploy-dev-app"
+        "LogGroupName": "/aws/lambda/spotenu-deploy-v1-app"
       }
     },
     "IamRoleLambdaExecution": {
@@ -88,7 +88,7 @@
                 "-",
                 [
                   "spotenu-deploy",
-                  "dev",
+                  "v1",
                   "lambda"
                 ]
               ]
@@ -104,7 +104,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/spotenu-deploy-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/spotenu-deploy-v1*:*"
                     }
                   ]
                 },
@@ -115,7 +115,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/spotenu-deploy-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/spotenu-deploy-v1*:*:*"
                     }
                   ]
                 }
@@ -129,7 +129,7 @@
             "-",
             [
               "spotenu-deploy",
-              "dev",
+              "v1",
               {
                 "Ref": "AWS::Region"
               },
@@ -146,9 +146,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/spotenu-deploy/dev/1598669692678-2020-08-29T02:54:52.678Z/spotenu-deploy.zip"
+          "S3Key": "serverless/spotenu-deploy/v1/1598905945342-2020-08-31T20:32:25.342Z/spotenu-deploy.zip"
         },
-        "FunctionName": "spotenu-deploy-dev-app",
+        "FunctionName": "spotenu-deploy-v1-app",
         "Handler": "src/lambda.handler",
         "MemorySize": 1024,
         "Role": {
@@ -176,20 +176,20 @@
         "AppLogGroup"
       ]
     },
-    "AppLambdaVersionxpdB9auaya1V4k3zYwpGlYvBtujz21mK44ENG4mAE": {
+    "AppLambdaVersionO49DVescHkoXbk6K0E9Sz04pyS1tx5KmepC7PZ1g": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "oZFJPc2XSzyJIatglP5pQTec6zhDcX7VoE8cV9Wkhuc="
+        "CodeSha256": "CIO5NGsdtIDW5Idc2bY8X6K7cZiNcREKPlsyUUKvesI="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "dev-spotenu-deploy",
+        "Name": "v1-spotenu-deploy",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -302,13 +302,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1598669500383": {
+    "ApiGatewayDeployment1598905619884": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         },
-        "StageName": "dev"
+        "StageName": "v1"
       },
       "DependsOn": [
         "ApiGatewayMethodAny",
@@ -362,7 +362,7 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersionxpdB9auaya1V4k3zYwpGlYvBtujz21mK44ENG4mAE"
+        "Ref": "AppLambdaVersionO49DVescHkoXbk6K0E9Sz04pyS1tx5KmepC7PZ1g"
       }
     },
     "ServiceEndpoint": {
@@ -383,7 +383,7 @@
             {
               "Ref": "AWS::URLSuffix"
             },
-            "/dev"
+            "/v1"
           ]
         ]
       }
